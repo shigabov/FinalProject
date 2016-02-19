@@ -1,10 +1,8 @@
-
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "22.0.1"
-
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
         minSdkVersion 10
@@ -23,15 +21,22 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
     }
+    configurations {
+        all*.exclude module: 'jsr305'
+    }
+    productFlavors {
+        paid {
+        }
+    }
 }
 
 
 dependencies {
-
     compile project(':libjokes')
     compile project(':mylibrary')
-    compile project (':backend')
+    compile project(':backend')
     // Added for AdMob
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    testCompile 'junit:junit:4.12'
 }
