@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "22.0.1"
     defaultConfig {
-        applicationId "com.udacity.gradle.builditbigger"
+        applicationId "com.example.asbv_apps.builditbigger"
         minSdkVersion 10
         targetSdkVersion 23
         versionCode 1
@@ -25,7 +25,7 @@ android {
         all*.exclude module: 'jsr305'
     }
     productFlavors {
-        paid {
+        free {
         }
     }
 }
@@ -33,10 +33,14 @@ android {
 
 dependencies {
     compile project(':libjokes')
-    compile project(':mylibrary')
+    compile project(':AndroidLibrary')
     compile project(':backend')
     // Added for AdMob
-    compile project(path: ':backend', configuration: 'android-endpoints')
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
     testCompile 'junit:junit:4.12'
+    compile project(path: ':backend', configuration: 'android-endpoints')
+    androidTestCompile 'com.android.support:support-annotations:23.1.1'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
 }
